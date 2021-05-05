@@ -11,7 +11,7 @@ export function setBricks(){
                 x: c * (brick.offSetLeft + brick.width) + brick.offSetLeft,
                 y: r * (brick.offSetTop + brick.height) + brick.offSetTop + brick.marginTop,
                 status: true,
-                color: brick.fillColor[Math.floor(Math.random() * 6)]
+                color: brick.fillColor[r]
             }           
         }
         
@@ -38,7 +38,7 @@ function drawBall(){
     ctx.beginPath();
 
     ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-    ctx.fillStyle = '#ffcd05';
+    ctx.fillStyle = '#BD3F28';
     ctx.fill();
 
     ctx.strokeStyle = '#2e3548';
@@ -54,7 +54,7 @@ function drawBoard(){
 
     ctx.lineWidth = 3;
     ctx.lineJoin = 'round';
-    ctx.strokeStyle = '#ffcd05';
+    ctx.strokeStyle = '#BD3F28';
     ctx.strokeRect(board.x, board.y, board.width, board.height);
 }
 
