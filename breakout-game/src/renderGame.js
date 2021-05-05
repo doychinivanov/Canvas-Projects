@@ -10,7 +10,8 @@ export function setBricks(){
             gameSets.bricks[r][c] = {
                 x: c * (brick.offSetLeft + brick.width) + brick.offSetLeft,
                 y: r * (brick.offSetTop + brick.height) + brick.offSetTop + brick.marginTop,
-                status: true
+                status: true,
+                color: brick.fillColor[Math.floor(Math.random() * 7)]
             }           
         }
         
@@ -22,7 +23,7 @@ function drawBricks(){
         for (let c = 0; c < brick.column; c++) {
             if(gameSets.bricks[r][c].status){
                 let currentBrick = gameSets.bricks[r][c];
-                ctx.fillStyle = brick.fillStyle;
+                ctx.fillStyle = currentBrick.color;
                 ctx.fillRect(currentBrick.x, currentBrick.y, brick.width, brick.height);
             
                 ctx.strokeStyle = brick.strokeStyle;

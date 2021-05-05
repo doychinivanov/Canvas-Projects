@@ -1,4 +1,7 @@
-import {canvas} from './setContext.js';
+import {ctx, canvas} from './setContext.js';
+
+// Brick colors
+// const colors = ['#e34c32', '#2ac74c', '#3a4ecf', '#df5fe3', '#d19741', '#41d195', '#a11347'];
 
 // GAME VARIABLES
 const boardWidth = 130;
@@ -36,8 +39,10 @@ export const brick = {
     offSetLeft: 15,
     offSetTop: 13,
     marginTop : 10,
-    fillColor : '#2e3548',
+    fillColor : ['#e34c32', '#2ac74c', '#3a4ecf', '#df5fe3', '#d19741', '#41d195', '#a11347'],
     strokeColor : '#FFF'
 }
 
+// ['#e34c32', '#2ac74c', '#3a4ecf', '#df5fe3', '#d19741', '#41d195', '#a11347']
+// Math.floor(Math.random() * 7
 export const gameSets = {life, score, scoreUnit, bricks}
