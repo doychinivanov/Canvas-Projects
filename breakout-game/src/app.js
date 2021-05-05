@@ -3,6 +3,7 @@ import {draw, setBricks} from './renderGame.js';
 import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall} from './collisions.js'
 import {canvas, ctx} from './setContext.js';
 
+const BACKGROUND_IMG = document.getElementById('background')
 
 canvas.style.border = '1px solid black';
 let leftArrow = false;
@@ -50,7 +51,7 @@ function update(){
 }
 
 function render(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(BACKGROUND_IMG, 0, 0, canvas.width, canvas.height);
     draw();
     update();
 
