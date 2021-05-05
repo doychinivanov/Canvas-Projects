@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breakout Game</title>
     <script type="module" src="/src/app.js"></script>
-    <style>
-        img{
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="./static/style.css">
 </head>
 <body>
     <canvas id="breakout" width="800" height="600"></canvas>
+    <div class="game-info">
+        <p class="level">Level 1</p>
+        <p class="score">Score : 1650</p>
+        <div class="lives">
+            <img src="./assets/PikPng.com_heart-art-png_5175219.png" alt="">
+            <img src="./assets/PikPng.com_heart-art-png_5175219.png" alt="">
+            <img src="./assets/PikPng.com_heart-art-png_5175219.png" alt="">
+        </div>
+    </div>
     <img id="background" src="/assets/Nebulullaby-624x624.jpg" alt="background">
 </body>
 </html>
