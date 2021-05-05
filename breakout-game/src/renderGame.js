@@ -11,7 +11,7 @@ export function setBricks(){
                 x: c * (brick.offSetLeft + brick.width) + brick.offSetLeft,
                 y: r * (brick.offSetTop + brick.height) + brick.offSetTop + brick.marginTop,
                 status: true,
-                color: brick.fillColor[Math.floor(Math.random() * 7)]
+                color: brick.fillColor[Math.floor(Math.random() * 6)]
             }           
         }
         

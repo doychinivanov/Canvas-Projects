@@ -39,7 +39,7 @@ export const brick = {
     offSetLeft: 15,
     offSetTop: 13,
     marginTop : 10,
-    fillColor : ['#e34c32', '#2ac74c', '#3a4ecf', '#df5fe3', '#d19741', '#41d195', '#a11347'],
+    fillColor : ['#BED661', '#89E894', '#78D5E3', '#7AF5F5', '#34DDDD', '#93E2D5'],
     strokeColor : '#FFF'
 }
 
