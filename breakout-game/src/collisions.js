@@ -1,16 +1,16 @@
-import {brick, board, ball, gameSets} from './gameVariables.js';
+import {gameSets} from './gameVariables.js';
 import {canvas} from './setContext.js';
 
 export function collidingWithBricks(){
-    for (let r = 0; r < brick.row; r++) {
-        for (let c = 0; c < brick.column; c++) {
+    for (let r = 0; r < gameSets.brick.row; r++) {
+        for (let c = 0; c < gameSets.brick.column; c++) {
             let currentBrick = gameSets.bricks[r][c];
             if(currentBrick.status){
-                    if(ball.x + ball.radius > currentBrick.x 
-                        && ball.x - ball.radius < currentBrick.x + brick.width
-                        && ball.y + ball.radius > currentBrick.y 
-                        && ball.y - ball.radius < currentBrick.y + brick.height){
-                            ball.dy = - ball.dy;
+                    if(gameSets.ball.x + gameSets.ball.radius > currentBrick.x 
+                        && gameSets.ball.x - gameSets.ball.radius < currentBrick.x + gameSets.brick.width
+                        && gameSets.ball.y + gameSets.ball.radius > currentBrick.y 
+                        && gameSets.ball.y - gameSets.ball.radius < currentBrick.y + gameSets.brick.height){
+                            gameSets.ball.dy = - gameSets.ball.dy;
                             currentBrick.status = false;
                             gameSets.score += gameSets.scoreUnit;
                     }
@@ -21,15 +21,15 @@ export function collidingWithBricks(){
 
 
 export function ballCollidesWithWall(){
-    if(ball.x > canvas.width - ball.radius || ball.x < 0 + ball.radius){
-        ball.dx = - ball.dx;
+    if(gameSets.ball.x > canvas.width - gameSets.ball.radius || gameSets.ball.x < 0 + gameSets.ball.radius){
+        gameSets.ball.dx = - gameSets.ball.dx;
     }
 
-    if(ball.y < 0 + ball.radius){
-        ball.dy = - ball.dy;
+    if(gameSets.ball.y < 0 + gameSets.ball.radius){
+        gameSets.ball.dy = - gameSets.ball.dy;
     }
 
-    if(ball.y + ball.radius > canvas.height){
+    if(gameSets.ball.y + gameSets.ball.radius > canvas.height){
         gameSets.life--;
         resetBall();
         resetBoard();
@@ -38,28 +38,28 @@ export function ballCollidesWithWall(){
 }
 
 export function ballBoardCollision(){
-    if(ball.x < board.x + board.width && ball.x > board.x && board.y < board.y + board.height && ball.y > board.y){
+    if(gameSets.ball.x < gameSets.board.x + gameSets.board.width && gameSets.ball.x > gameSets.board.x && gameSets.board.y < gameSets.board.y + gameSets.board.height && gameSets.ball.y > gameSets.board.y){
        
-        let pointOfCollision = ball.x - (board.x + board.width/2);
-        pointOfCollision = pointOfCollision / (board.width / 2);
+        let pointOfCollision = gameSets.ball.x - (gameSets.board.x + gameSets.board.width/2);
+        pointOfCollision = pointOfCollision / (gameSets.board.width / 2);
 
         let angle = pointOfCollision * (Math.PI/3);
 
-        ball.dx = ball.speed * Math.sin(angle);
-        ball.dy = - ball.speed * Math.cos(angle);
+        gameSets.ball.dx = gameSets.ball.speed * Math.sin(angle);
+        gameSets.ball.dy = - gameSets.ball.speed * Math.cos(angle);
     }
 }
 
 
 function resetBall(){
-    ball.x = canvas.width / 2;
-    ball.y = board.y - ball.radius;
-    ball.dx = 3 * (Math.random() * 2 -1);
-    ball.dy = -3;
+    gameSets.ball.x = canvas.width / 2;
+    gameSets.ball.y = gameSets.board.y - gameSets.ball.radius;
+    gameSets.ball.dx = 3 * (Math.random() * 2 -1);
+    gameSets.ball.dy = -3;
 }
 
 function resetBoard(){
-    board.x = canvas.width/2 - board.width/2;
-    board.y = canvas.height - 40 - board.height;
-    board.dx = 5;
+    gameSets.board.x = canvas.width/2 - gameSets.board.width/2;
+    gameSets.board.y = canvas.height - 40 - gameSets.board.height;
+    gameSets.board.dx = 5;
 }

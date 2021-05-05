@@ -9,12 +9,13 @@ const boardMargin = 40;
 const boardHeight = 17;
 const ballRadius = 9;
 
+let level = 1;
 let life = 3;
 let score = 0;
 const scoreUnit = 15;
 const bricks = [];
 
-export const board = {
+const board = {
     x : canvas.width/2 - boardWidth/2,
     y : canvas.height - boardMargin - boardHeight,
     width : boardWidth,
@@ -22,7 +23,7 @@ export const board = {
     dx : 5
 };
 
-export const ball = {
+const ball = {
     x: canvas.width / 2,
     y : board.y - ballRadius,
     radius : ballRadius,
@@ -31,7 +32,7 @@ export const ball = {
     dy : -3
 }
 
-export const brick = {
+const brick = {
     row: 3,
     column : 11,
     width: 55,
@@ -45,4 +46,4 @@ export const brick = {
 
 // ['#e34c32', '#2ac74c', '#3a4ecf', '#df5fe3', '#d19741', '#41d195', '#a11347']
 // Math.floor(Math.random() * 7
-export const gameSets = {life, score, scoreUnit, bricks}
+export const gameSets = {level, life, board, ball, score, scoreUnit, bricks, brick}

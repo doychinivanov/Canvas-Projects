@@ -1,17 +1,17 @@
-import {brick, board, ball, gameSets} from './gameVariables.js';
+import {gameSets} from './gameVariables.js';
 import {ctx} from './setContext.js';
 
 
 
 export function setBricks(){
-    for (let r = 0; r < brick.row; r++) {
+    for (let r = 0; r < gameSets.brick.row; r++) {
         gameSets.bricks[r] = [];
-        for (let c = 0; c < brick.column; c++) {
+        for (let c = 0; c <  gameSets.brick.column; c++) {
             gameSets.bricks[r][c] = {
-                x: c * (brick.offSetLeft + brick.width) + brick.offSetLeft,
-                y: r * (brick.offSetTop + brick.height) + brick.offSetTop + brick.marginTop,
+                x: c * (gameSets.brick.offSetLeft + gameSets.brick.width) + gameSets.brick.offSetLeft,
+                y: r * (gameSets.brick.offSetTop + gameSets.brick.height) + gameSets.brick.offSetTop + gameSets.brick.marginTop,
                 status: true,
-                color: brick.fillColor[r]
+                color: gameSets.brick.fillColor[r]
             }           
         }
         
@@ -19,15 +19,15 @@ export function setBricks(){
 }
 
 function drawBricks(){
-    for (let r = 0; r < brick.row; r++) {
-        for (let c = 0; c < brick.column; c++) {
+    for (let r = 0; r < gameSets.brick.row; r++) {
+        for (let c = 0; c < gameSets.brick.column; c++) {
             if(gameSets.bricks[r][c].status){
                 let currentBrick = gameSets.bricks[r][c];
                 ctx.fillStyle = currentBrick.color;
-                ctx.fillRect(currentBrick.x, currentBrick.y, brick.width, brick.height);
+                ctx.fillRect(currentBrick.x, currentBrick.y, gameSets.brick.width, gameSets.brick.height);
             
-                ctx.strokeStyle = brick.strokeStyle;
-                ctx.strokeRect(currentBrick.x, currentBrick.y, brick.width, brick.height);
+                ctx.strokeStyle = gameSets.brick.strokeStyle;
+                ctx.strokeRect(currentBrick.x, currentBrick.y, gameSets.brick.width, gameSets.brick.height);
             }
         }
         
@@ -37,7 +37,7 @@ function drawBricks(){
 function drawBall(){
     ctx.beginPath();
 
-    ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+    ctx.arc(gameSets.ball.x, gameSets.ball.y, gameSets.ball.radius, 0, Math.PI * 2);
     ctx.fillStyle = '#5C021E';
     ctx.fill();
 
@@ -50,12 +50,12 @@ function drawBall(){
 
 function drawBoard(){
     ctx.fillStyle = '#2e3548';
-    ctx.fillRect(board.x, board.y, board.width, board.height);
+    ctx.fillRect(gameSets.board.x, gameSets.board.y, gameSets.board.width, gameSets.board.height);
 
     ctx.lineWidth = 3;
     ctx.lineJoin = 'round';
     ctx.strokeStyle = '#5C021E';
-    ctx.strokeRect(board.x, board.y, board.width, board.height);
+    ctx.strokeRect(gameSets.board.x, gameSets.board.y, gameSets.board.width, gameSets.board.height);
 }
 
 export function draw(){

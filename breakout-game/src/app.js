@@ -1,9 +1,11 @@
-import {ball, board, brick} from './gameVariables.js';
+import {gameSets} from './gameVariables.js';
 import {draw, setBricks} from './renderGame.js';
 import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall} from './collisions.js'
 import {canvas, ctx} from './setContext.js';
 
-const BACKGROUND_IMG = document.getElementById('background')
+const BACKGROUND_IMG = document.getElementById('background');
+const LEVEL_HOLDER = document.querySelector('#level-holder');
+const SCORE_HOLDER = document.querySelector('#score-holder');
 
 canvas.style.border = '1px solid black';
 let leftArrow = false;
@@ -11,6 +13,7 @@ let rightArrow = false;
 
 setBricks()
 render();
+
 
 document.addEventListener('keydown', (ev)=>{
     if(ev.keyCode == 37){
@@ -29,16 +32,16 @@ document.addEventListener('keyup', (ev)=>{
 });
 
 function moveBoard(){
-    if(rightArrow && board.x + board.width < canvas.width){
-        board.x += board.dx;
-    } else if(leftArrow && board.x > 0){
-        board.x -= board.dx;
+    if(rightArrow && gameSets.board.x + gameSets.board.width < canvas.width){
+        gameSets.board.x += gameSets.board.dx;
+    } else if(leftArrow && gameSets.board.x > 0){
+        gameSets.board.x -= gameSets.board.dx;
     }
 }
 
 function moveBall(){
-    ball.x += ball.dx,
-    ball.y += ball.dy;
+    gameSets.ball.x += gameSets.ball.dx,
+    gameSets.ball.y += gameSets.ball.dy;
 }
 
 
@@ -48,6 +51,8 @@ function update(){
     ballCollidesWithWall();
     ballBoardCollision();
     collidingWithBricks();
+    SCORE_HOLDER.textContent = gameSets.score;
+    LEVEL_HOLDER.textContent = gameSets.level;
 }
 
 function render(){
@@ -55,5 +60,6 @@ function render(){
     draw();
     update();
 
+    
     requestAnimationFrame(render);
 }
