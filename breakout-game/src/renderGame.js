@@ -38,7 +38,7 @@ function drawBall(){
     ctx.beginPath();
 
     ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-    ctx.fillStyle = '#BD3F28';
+    ctx.fillStyle = '#5C021E';
     ctx.fill();
 
     ctx.strokeStyle = '#2e3548';
@@ -54,7 +54,7 @@ function drawBoard(){
 
     ctx.lineWidth = 3;
     ctx.lineJoin = 'round';
-    ctx.strokeStyle = '#BD3F28';
+    ctx.strokeStyle = '#5C021E';
     ctx.strokeRect(board.x, board.y, board.width, board.height);
 }
 
