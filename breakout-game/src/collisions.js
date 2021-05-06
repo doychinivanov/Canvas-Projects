@@ -1,3 +1,5 @@
+import {html, render} from '../node_modules/lit-html/lit-html.js'
+
 import {gameSets} from './gameVariables.js';
 import {canvas} from './setContext.js';
 import {setBricks} from './renderGame.js';
@@ -38,7 +40,8 @@ export function ballCollidesWithWall(){
     }
 
     if(gameSets.ball.y + gameSets.ball.radius > canvas.height){
-        gameSets.life--;
+        // gameSets.life--;
+        getLives();
         resetBall();
         resetBoard();
 
@@ -96,4 +99,19 @@ export function nextLevel(){
         }
         
     }
+}
+
+const fullHeart = () => html`<img src="./assets/PikPng.com_heart-art-png_5175219.png" alt="">`;
+const emptyHeart = () => html `<img src="./assets/PikPng.com_pixel-heart-png_971526.png" alt="">`;
+
+function getLives(){
+    [...document.querySelectorAll('img')].forEach(i => i.remove());
+    gameSets.life.shift();
+    gameSets.life.push(0);
+
+    gameSets.life.forEach(x=>{
+        const fragment = document.createDocumentFragment();
+        x == 1 ? render(fullHeart(), fragment) : render(emptyHeart(), fragment);
+        document.querySelector('.lives').appendChild(fragment)
+    })
 }

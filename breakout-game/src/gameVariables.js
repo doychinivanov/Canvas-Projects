@@ -11,7 +11,7 @@ const ballRadius = 9;
 let GAME_STATE = true;
 
 let level = 1;
-let life = 3;
+let life = [1, 1, 1];
 let score = 0;
 const LAST_LEVEL = 7;
 const scoreUnit = 15;

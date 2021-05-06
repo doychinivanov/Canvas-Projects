@@ -7,7 +7,7 @@ const BACKGROUND_IMG = document.getElementById('background');
 const LEVEL_HOLDER = document.querySelector('#level-holder');
 const SCORE_HOLDER = document.querySelector('#score-holder');
 
-canvas.style.border = '1px solid black';
+
 let leftArrow = false;
 let rightArrow = false;
 
@@ -43,31 +43,6 @@ function moveBall(){
     gameSets.ball.x += gameSets.ball.dx,
     gameSets.ball.y += gameSets.ball.dy;
 }
-
-// function nextLevel(){
-//     let levelComplete = true;
-
-//     for (let i = 0; i < gameSets.brick.row; i++) {
-//         for (let j = 0; j < gameSets.brick.column; j++) {
-//             levelComplete = levelComplete && gameSets.bricks[r][c].status == false;    
-//         }
-
-//         if(levelComplete){
-
-//             if(gameSets.level >= gameSets.LAST_LEVEL){
-//                 GAME_STATE = false;
-//             }
-
-//             gameSets.brick.row++;
-//             setBricks();
-//             gameSets.ball.speed += 0.7;
-//             resetBall();
-//             gameSets.level++;
-//         }
-        
-//     }
-// }
-
 
 function update(){
     moveBoard();
