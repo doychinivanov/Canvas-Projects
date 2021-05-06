@@ -8,10 +8,12 @@ const boardWidth = 130;
 const boardMargin = 40;
 const boardHeight = 17;
 const ballRadius = 9;
+let GAME_STATE = true;
 
 let level = 1;
 let life = 3;
 let score = 0;
+const LAST_LEVEL = 7;
 const scoreUnit = 15;
 const bricks = [];
 
@@ -46,4 +48,4 @@ const brick = {
 
 // ['#e34c32', '#2ac74c', '#3a4ecf', '#df5fe3', '#d19741', '#41d195', '#a11347']
 // Math.floor(Math.random() * 7
-export const gameSets = {level, life, board, ball, score, scoreUnit, bricks, brick}
+export const gameSets = {level, life, board, ball, score, scoreUnit, bricks, brick, LAST_LEVEL, GAME_STATE}

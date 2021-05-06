@@ -1,5 +1,6 @@
 import {gameSets} from './gameVariables.js';
 import {canvas} from './setContext.js';
+import {setBricks} from './renderGame.js';
 
 export function collidingWithBricks(){
     for (let r = 0; r < gameSets.brick.row; r++) {
@@ -62,4 +63,29 @@ function resetBoard(){
     gameSets.board.x = canvas.width/2 - gameSets.board.width/2;
     gameSets.board.y = canvas.height - 40 - gameSets.board.height;
     gameSets.board.dx = 5;
+}
+
+export function nextLevel(){
+    let levelComplete = true;
+
+    for (let i = 0; i < gameSets.brick.row; i++) {
+        for (let j = 0; j < gameSets.brick.column; j++) {
+            levelComplete = levelComplete && gameSets.bricks[i][j].status == false;    
+        }
+
+        if(levelComplete){
+
+            if(gameSets.level >= gameSets.LAST_LEVEL){
+                gameStats.GAME_STATE = false;
+                return;
+            }
+
+            gameSets.brick.row++;
+            setBricks();
+            gameSets.ball.speed += 0.7;
+            resetBall();
+            gameSets.level++;
+        }
+        
+    }
 }

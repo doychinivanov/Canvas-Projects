@@ -1,6 +1,6 @@
 import {gameSets} from './gameVariables.js';
 import {draw, setBricks} from './renderGame.js';
-import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall} from './collisions.js'
+import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall, nextLevel} from './collisions.js'
 import {canvas, ctx} from './setContext.js';
 
 const BACKGROUND_IMG = document.getElementById('background');
@@ -44,6 +44,30 @@ function moveBall(){
     gameSets.ball.y += gameSets.ball.dy;
 }
 
+// function nextLevel(){
+//     let levelComplete = true;
+
+//     for (let i = 0; i < gameSets.brick.row; i++) {
+//         for (let j = 0; j < gameSets.brick.column; j++) {
+//             levelComplete = levelComplete && gameSets.bricks[r][c].status == false;    
+//         }
+
+//         if(levelComplete){
+
+//             if(gameSets.level >= gameSets.LAST_LEVEL){
+//                 GAME_STATE = false;
+//             }
+
+//             gameSets.brick.row++;
+//             setBricks();
+//             gameSets.ball.speed += 0.7;
+//             resetBall();
+//             gameSets.level++;
+//         }
+        
+//     }
+// }
+
 
 function update(){
     moveBoard();
@@ -51,6 +75,7 @@ function update(){
     ballCollidesWithWall();
     ballBoardCollision();
     collidingWithBricks();
+    nextLevel();
     SCORE_HOLDER.textContent = gameSets.score;
     LEVEL_HOLDER.textContent = gameSets.level;
 }
