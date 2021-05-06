@@ -2,6 +2,12 @@ import {gameSets} from './gameVariables.js';
 import {canvas} from './setContext.js';
 import {setBricks} from './renderGame.js';
 
+const BRICK_SOUND = new Audio();
+BRICK_SOUND.src = './assets/sounds/brick-breaker.wav'
+
+const BOARD_SOUND = new Audio();
+BOARD_SOUND.src = './assets/sounds/board-sound.wav'
+
 export function collidingWithBricks(){
     for (let r = 0; r < gameSets.brick.row; r++) {
         for (let c = 0; c < gameSets.brick.column; c++) {
@@ -11,6 +17,7 @@ export function collidingWithBricks(){
                         && gameSets.ball.x - gameSets.ball.radius < currentBrick.x + gameSets.brick.width
                         && gameSets.ball.y + gameSets.ball.radius > currentBrick.y 
                         && gameSets.ball.y - gameSets.ball.radius < currentBrick.y + gameSets.brick.height){
+                            BRICK_SOUND.play();
                             gameSets.ball.dy = - gameSets.ball.dy;
                             currentBrick.status = false;
                             gameSets.score += gameSets.scoreUnit;
@@ -41,6 +48,7 @@ export function ballCollidesWithWall(){
 export function ballBoardCollision(){
     if(gameSets.ball.x < gameSets.board.x + gameSets.board.width && gameSets.ball.x > gameSets.board.x && gameSets.board.y < gameSets.board.y + gameSets.board.height && gameSets.ball.y > gameSets.board.y){
        
+        BOARD_SOUND.play();
         let pointOfCollision = gameSets.ball.x - (gameSets.board.x + gameSets.board.width/2);
         pointOfCollision = pointOfCollision / (gameSets.board.width / 2);
 
