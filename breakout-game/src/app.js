@@ -60,6 +60,7 @@ function render(){
     draw();
     update();
 
-    
-    requestAnimationFrame(render);
+    if(gameSets.GAME_STATE != false){
+        requestAnimationFrame(render);
+    }    
 }

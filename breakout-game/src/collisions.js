@@ -95,6 +95,7 @@ export function nextLevel(){
             setBricks();
             gameSets.ball.speed += 0.7;
             resetBall();
+            resetBoard();
             gameSets.level++;
         }
         
@@ -113,5 +114,9 @@ function getLives(){
         const fragment = document.createDocumentFragment();
         x == 1 ? render(fullHeart(), fragment) : render(emptyHeart(), fragment);
         document.querySelector('.lives').appendChild(fragment)
-    })
+    });
+
+    if(gameSets.life.filter(x => x==1).length == 0){
+        gameSets.GAME_STATE = false;
+    }
 }
