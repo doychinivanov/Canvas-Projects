@@ -10,6 +10,9 @@ BRICK_SOUND.src = './assets/sounds/brick-breaker.wav'
 const BOARD_SOUND = new Audio();
 BOARD_SOUND.src = './assets/sounds/board-sound.wav'
 
+const LOST_LIFE = new Audio();
+LOST_LIFE.src = './assets/sounds/lost-life.wav';
+
 export function collidingWithBricks(){
     for (let r = 0; r < gameSets.brick.row; r++) {
         for (let c = 0; c < gameSets.brick.column; c++) {
@@ -40,7 +43,6 @@ export function ballCollidesWithWall(){
     }
 
     if(gameSets.ball.y + gameSets.ball.radius > canvas.height){
-        // gameSets.life--;
         getLives();
         resetBall();
         resetBoard();
@@ -109,6 +111,8 @@ function getLives(){
     [...document.querySelectorAll('img')].forEach(i => i.remove());
     gameSets.life.shift();
     gameSets.life.push(0);
+
+    LOST_LIFE.play();
 
     gameSets.life.forEach(x=>{
         const fragment = document.createDocumentFragment();
