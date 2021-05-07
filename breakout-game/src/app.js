@@ -11,8 +11,16 @@ const SCORE_HOLDER = document.querySelector('#score-holder');
 let leftArrow = false;
 let rightArrow = false;
 
-setBricks()
-render();
+
+const OPENING_MUSIC = new Audio();
+OPENING_MUSIC.src = './assets/sounds/opening-music.mp3';
+OPENING_MUSIC.loop = 'true';
+
+document.querySelector('button').addEventListener('click', (ev)=>{
+    document.querySelector('.welcoming-msg').style.display = 'none';
+    document.querySelector('.lives').style.display = 'block';
+    startGame();
+})
 
 
 document.addEventListener('keydown', (ev)=>{
@@ -63,4 +71,18 @@ function render(){
     if(gameSets.GAME_STATE != false){
         requestAnimationFrame(render);
     }    
+}
+
+function startGame(){
+    OPENING_MUSIC.play();
+
+    const STARTING_SCREEN = document.querySelector('.starting-screen');
+    STARTING_SCREEN.addEventListener('click', (ev)=>{
+        if(ev.target.id == 'start-game'){
+            STARTING_SCREEN.style.display = 'none';
+            OPENING_MUSIC.muted = true;
+            setBricks()
+            render();
+        }
+    })
 }

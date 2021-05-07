@@ -10,6 +10,11 @@ body{
     display: flex;
 }
 
+p, h1, h3, h4, h5, button{
+    font-family: 'Press Start 2P', cursive;
+    color: wheat;
+}
+
 .game-info{
     position: relative;
     background-color: #18191D;
@@ -36,6 +41,7 @@ body{
     }
 
     .lives{
+        display: none;
         position: absolute;
         bottom: 20px;  
         left: 25%;
@@ -45,5 +51,62 @@ body{
             width: 50px;
             margin-right: 2px;
         }
+    }
+}
+
+.starting-screen{
+    background-image: url('/assets/Nebulullaby-624x624.jpg');
+    position: absolute;
+    width: 800px;
+    height: 600px;
+
+
+    h1, p, h3{
+        font-family: 'Press Start 2P', cursive;
+        color: wheat;
+        text-align: center;
+    }
+
+    h1{
+        font-size: 55px;
+        position: relative;
+        top: 10%;
+    }
+
+    h3{
+        font-size: 30px;
+        position: relative;
+        top: 25%;
+    }
+
+    p{
+        font-size: 25px;
+        cursor: pointer;
+        position: relative;
+        top: 40%;
+        color: burlywood;
+    }
+}
+
+
+.welcoming-msg{
+    position: absolute;
+    background-color: black;
+    top: 8%;
+    left: 6%;
+    width: 70%;
+    text-align: center;
+    height: 65%;
+
+    h3, h4, button, h5{
+        margin-top: 50px;
+        line-height: 2rem;
+    }
+
+    button{
+        cursor: pointer;
+        background-color: black;
+        padding: 2px 12px;
+        border: 1px solid wheat;
     }
 }
