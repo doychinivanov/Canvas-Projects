@@ -18,6 +18,9 @@ const OPENING_MUSIC = new Audio();
 OPENING_MUSIC.src = './assets/sounds/opening-music.mp3';
 OPENING_MUSIC.loop = 'true';
 
+const GAME_OVER_MUSIC = new Audio();
+GAME_OVER_MUSIC.src = './assets/sounds/game-over.mp3';
+
 document.querySelector('#continue').addEventListener('click', (ev)=>{
     document.querySelector('.welcoming-msg').style.display = 'none';
     document.querySelector('.lives').style.display = 'block';
@@ -74,6 +77,7 @@ function renderGame(){
         requestAnimationFrame(renderGame);
     } else {
         GAME_OVER_SCREEN.style.display = 'block';
+        GAME_OVER_MUSIC.play();
         render(gameOver(), GAME_OVER_SCREEN);
     }
 }
