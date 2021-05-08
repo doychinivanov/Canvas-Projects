@@ -89,7 +89,7 @@ export function nextLevel(){
         if(levelComplete){
 
             if(gameSets.level >= gameSets.LAST_LEVEL){
-                gameStats.GAME_STATE = false;
+                gameSets.GAME_STATE = false;
                 return;
             }
 
@@ -104,10 +104,10 @@ export function nextLevel(){
     }
 }
 
-const fullHeart = () => html`<img src="./assets/PikPng.com_heart-art-png_5175219.png" alt="">`;
-const emptyHeart = () => html `<img src="./assets/PikPng.com_pixel-heart-png_971526.png" alt="">`;
+export const fullHeart = () => html`<img src="./assets/PikPng.com_heart-art-png_5175219.png" alt="">`;
+export const emptyHeart = () => html `<img src="./assets/PikPng.com_pixel-heart-png_971526.png" alt="">`;
 
-function getLives(){
+export function getLives(){
     [...document.querySelectorAll('img')].forEach(i => i.remove());
     gameSets.life.shift();
     gameSets.life.push(0);

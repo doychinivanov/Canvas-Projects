@@ -46,6 +46,4 @@ const brick = {
     strokeColor : '#FFF'
 }
 
-// ['#e34c32', '#2ac74c', '#3a4ecf', '#df5fe3', '#d19741', '#41d195', '#a11347']
-// Math.floor(Math.random() * 7
 export const gameSets = {level, life, board, ball, score, scoreUnit, bricks, brick, LAST_LEVEL, GAME_STATE}

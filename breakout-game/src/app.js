@@ -2,7 +2,7 @@ import {html, render} from '../node_modules/lit-html/lit-html.js';
 
 import {gameSets} from './gameVariables.js';
 import {draw, setBricks} from './renderGame.js';
-import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall, nextLevel} from './collisions.js'
+import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall, nextLevel, fullHeart, emptyHeart } from './collisions.js'
 import {canvas, ctx} from './setContext.js';
 
 const BACKGROUND_IMG = document.getElementById('background');
@@ -72,14 +72,53 @@ function renderGame(){
     ctx.drawImage(BACKGROUND_IMG, 0, 0, canvas.width, canvas.height);
     draw();
     update();
-
+    
     if(gameSets.GAME_STATE != false){
         requestAnimationFrame(renderGame);
     } else {
         GAME_OVER_SCREEN.style.display = 'block';
         GAME_OVER_MUSIC.play();
         render(gameOver(), GAME_OVER_SCREEN);
+        restartGame();
+    
     }
+}
+
+function restartGame(){
+    GAME_OVER_SCREEN.focus();
+    GAME_OVER_SCREEN.style.outline = 'none';
+    GAME_OVER_SCREEN.addEventListener('keydown', (ev)=>{
+        if(ev.keyCode == 32){
+            GAME_OVER_MUSIC.pause();
+            GAME_OVER_MUSIC.currentTime = 0;
+            GAME_OVER_SCREEN.style.display = 'none';
+            resetParams();
+            resetHearts();
+            setBricks();
+            renderGame();
+        }
+    })
+}
+
+function resetParams(){
+    gameSets.GAME_STATE = true;
+    gameSets.ball.speed = 4;
+    gameSets.ball.dy = -3;
+    gameSets.ball.dx = 3 * (Math.random() * 2 -1);
+    gameSets.brick.row = 3;
+    gameSets.board.dx = 5;
+    gameSets.level = 1;
+    gameSets.life = [1, 1, 1];
+    gameSets.score = 0;
+}
+
+function resetHearts(){
+    document.querySelector('.lives').innerHTML = ''
+    gameSets.life.forEach(x=>{
+    const fragment = document.createDocumentFragment();
+    x == 1 ? render(fullHeart(), fragment) : render(emptyHeart(), fragment);
+    document.querySelector('.lives').appendChild(fragment)
+    });
 }
 
 function startGame(){
@@ -90,7 +129,7 @@ function startGame(){
         if(ev.target.id == 'start-game'){
             STARTING_SCREEN.style.display = 'none';
             OPENING_MUSIC.muted = true;
-            setBricks()
+            setBricks();
             renderGame();
         }
     })
@@ -103,5 +142,5 @@ const gameOver = () => html`
 
 <h3>Your Score is 1575</h3>
 
-<button id="restart">Play Again</button>
+<button id="restart">Press Space to Restart Game</button>
 `;
