@@ -15,6 +15,13 @@ p, h1, h3, h4, h5, button{
     color: wheat;
 }
 
+button{
+    cursor: pointer;
+    background-color: black;
+    padding: 2px 12px;
+    border: 1px solid wheat;
+}
+
 .game-info{
     position: relative;
     background-color: #18191D;
@@ -88,8 +95,7 @@ p, h1, h3, h4, h5, button{
     }
 }
 
-
-.welcoming-msg{
+.welcoming-msg, .game-over{
     position: absolute;
     background-color: black;
     top: 8%;
@@ -97,16 +103,59 @@ p, h1, h3, h4, h5, button{
     width: 70%;
     text-align: center;
     height: 65%;
+}
 
+.welcoming-msg{
     h3, h4, button, h5{
         margin-top: 50px;
         line-height: 2rem;
     }
+}
+
+.game-over{
+    display: none;
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+
+    img{
+        margin-top: 30px;
+        width: 150px;
+    }
+
+    h1, h3, button{
+        margin-top: 35px;
+    }
 
     button{
-        cursor: pointer;
-        background-color: black;
-        padding: 2px 12px;
-        border: 1px solid wheat;
+        padding: 7px 15px;
     }
 }
+
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }

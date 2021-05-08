@@ -1,3 +1,5 @@
+import {html, render} from '../node_modules/lit-html/lit-html.js';
+
 import {gameSets} from './gameVariables.js';
 import {draw, setBricks} from './renderGame.js';
 import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall, nextLevel} from './collisions.js'
@@ -6,7 +8,7 @@ import {canvas, ctx} from './setContext.js';
 const BACKGROUND_IMG = document.getElementById('background');
 const LEVEL_HOLDER = document.querySelector('#level-holder');
 const SCORE_HOLDER = document.querySelector('#score-holder');
-
+const GAME_OVER_SCREEN = document.querySelector('.game-over');
 
 let leftArrow = false;
 let rightArrow = false;
@@ -16,7 +18,7 @@ const OPENING_MUSIC = new Audio();
 OPENING_MUSIC.src = './assets/sounds/opening-music.mp3';
 OPENING_MUSIC.loop = 'true';
 
-document.querySelector('button').addEventListener('click', (ev)=>{
+document.querySelector('#continue').addEventListener('click', (ev)=>{
     document.querySelector('.welcoming-msg').style.display = 'none';
     document.querySelector('.lives').style.display = 'block';
     startGame();
@@ -63,14 +65,17 @@ function update(){
     LEVEL_HOLDER.textContent = gameSets.level;
 }
 
-function render(){
+function renderGame(){
     ctx.drawImage(BACKGROUND_IMG, 0, 0, canvas.width, canvas.height);
     draw();
     update();
 
     if(gameSets.GAME_STATE != false){
-        requestAnimationFrame(render);
-    }    
+        requestAnimationFrame(renderGame);
+    } else {
+        GAME_OVER_SCREEN.style.display = 'block';
+        render(gameOver(), GAME_OVER_SCREEN);
+    }
 }
 
 function startGame(){
@@ -82,7 +87,17 @@ function startGame(){
             STARTING_SCREEN.style.display = 'none';
             OPENING_MUSIC.muted = true;
             setBricks()
-            render();
+            renderGame();
         }
     })
 }
+
+const gameOver = () => html`
+<img src="/assets/skull.jpg" alt="death">
+
+<h1>Game Over</h1>
+
+<h3>Your Score is 1575</h3>
+
+<button id="restart">Play Again</button>
+`;

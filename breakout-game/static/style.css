@@ -14,6 +14,13 @@ p, h1, h3, h4, h5, button {
   color: wheat;
 }
 
+button {
+  cursor: pointer;
+  background-color: black;
+  padding: 2px 12px;
+  border: 1px solid wheat;
+}
+
 .game-info {
   position: relative;
   background-color: #18191D;
@@ -85,7 +92,7 @@ p, h1, h3, h4, h5, button {
   color: burlywood;
 }
 
-.welcoming-msg {
+.welcoming-msg, .game-over {
   position: absolute;
   background-color: black;
   top: 8%;
@@ -100,9 +107,69 @@ p, h1, h3, h4, h5, button {
   line-height: 2rem;
 }
 
-.welcoming-msg button {
-  cursor: pointer;
-  background-color: black;
-  padding: 2px 12px;
-  border: 1px solid wheat;
+.game-over {
+  display: none;
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+
+.game-over img {
+  margin-top: 30px;
+  width: 150px;
+}
+
+.game-over h1, .game-over h3, .game-over button {
+  margin-top: 35px;
+}
+
+.game-over button {
+  padding: 7px 15px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
