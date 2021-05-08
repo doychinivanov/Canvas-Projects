@@ -5,6 +5,8 @@ import {draw, setBricks} from './renderGame.js';
 import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall, nextLevel, fullHeart, emptyHeart } from './collisions.js'
 import {canvas, ctx} from './setContext.js';
 
+let game_is_running = true;
+
 const BACKGROUND_IMG = document.getElementById('background');
 const LEVEL_HOLDER = document.querySelector('#level-holder');
 const SCORE_HOLDER = document.querySelector('#score-holder');
@@ -73,14 +75,16 @@ function renderGame(){
     draw();
     update();
     
-    if(gameSets.GAME_STATE != false){
+    if(gameSets.GAME_STATE != false && game_is_running == true){
         requestAnimationFrame(renderGame);
-    } else {
+    }
+    
+    if(gameSets.GAME_STATE == false) {
+        game_is_running = false;
+        render(gameOver(), GAME_OVER_SCREEN);
         GAME_OVER_SCREEN.style.display = 'block';
         GAME_OVER_MUSIC.play();
-        render(gameOver(), GAME_OVER_SCREEN);
         restartGame();
-    
     }
 }
 
@@ -92,10 +96,15 @@ function restartGame(){
             GAME_OVER_MUSIC.pause();
             GAME_OVER_MUSIC.currentTime = 0;
             GAME_OVER_SCREEN.style.display = 'none';
+            render(emptyElement(), GAME_OVER_SCREEN);
             resetParams();
             resetHearts();
-            setBricks();
-            renderGame();
+
+            if(!game_is_running){
+                game_is_running = true;
+                setBricks();
+                renderGame();
+            }
         }
     })
 }
@@ -144,3 +153,5 @@ const gameOver = () => html`
 
 <button id="restart">Press Space to Restart Game</button>
 `;
+
+const emptyElement = () => html``;
