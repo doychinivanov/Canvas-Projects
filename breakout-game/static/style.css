@@ -9,9 +9,13 @@ body {
   display: flex;
 }
 
-p, h1, h3, h4, h5, button {
+p, h1, h3, h4, h5, button, li {
   font-family: 'Press Start 2P', cursive;
   color: wheat;
+}
+
+li {
+  list-style: none;
 }
 
 button {
@@ -75,21 +79,55 @@ button {
 .starting-screen h1 {
   font-size: 55px;
   position: relative;
-  top: 10%;
+  top: 3%;
 }
 
 .starting-screen h3 {
   font-size: 30px;
   position: relative;
-  top: 25%;
+  top: 8%;
 }
 
 .starting-screen p {
   font-size: 25px;
   cursor: pointer;
   position: relative;
-  top: 40%;
+  top: 52%;
   color: burlywood;
+}
+
+.starting-screen .scores {
+  background-color: #18191D;
+  width: 60%;
+  position: absolute;
+  top: 220px;
+  left: 150px;
+  padding-left: 0px;
+}
+
+.starting-screen .scores li {
+  border-top: 1px solid lawngreen;
+  border-bottom: 1px solid lawngreen;
+  padding: 6px 0px;
+  text-align: center;
+}
+
+.starting-screen form {
+  position: absolute;
+  bottom: 23%;
+  left: 25%;
+  width: 400px;
+}
+
+.starting-screen form input {
+  background-color: #18191D;
+  width: 100%;
+  height: 28px;
+  border: none;
+  outline: solid;
+  color: lawngreen;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .welcoming-msg, .game-over {

@@ -7,6 +7,7 @@ import {canvas, ctx} from './setContext.js';
 
 let game_is_running = true;
 
+let username = '';
 const BACKGROUND_IMG = document.getElementById('background');
 const LEVEL_HOLDER = document.querySelector('#level-holder');
 const SCORE_HOLDER = document.querySelector('#score-holder');
@@ -136,10 +137,16 @@ function startGame(){
     const STARTING_SCREEN = document.querySelector('.starting-screen');
     STARTING_SCREEN.addEventListener('click', (ev)=>{
         if(ev.target.id == 'start-game'){
-            STARTING_SCREEN.style.display = 'none';
-            OPENING_MUSIC.muted = true;
-            setBricks();
-            renderGame();
+            username = document.querySelector('input').value;
+
+            if(username != '' && username.length < 10){
+                STARTING_SCREEN.style.display = 'none';
+                OPENING_MUSIC.muted = true;
+                setBricks();
+                renderGame();
+            } else {
+                 alert("Please insert player's name! Name must be less than 10 characters long.")
+            }
         }
     })
 }
