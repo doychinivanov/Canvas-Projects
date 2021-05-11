@@ -1,6 +1,6 @@
 import {html, render} from '../node_modules/lit-html/lit-html.js';
 import {sendScore, getBest} from './api/data.js';
-
+import {landingTemp} from './templates.js';
 import {gameSets} from './gameVariables.js';
 import {draw, setBricks} from './renderGame.js';
 import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall, nextLevel, fullHeart, emptyHeart } from './collisions.js'
@@ -135,10 +135,11 @@ function resetHearts(){
     });
 }
 
-function startGame(){
+async function startGame(){
     OPENING_MUSIC.play();
-
+    const bestScores = await getBest();
     const STARTING_SCREEN = document.querySelector('.starting-screen');
+    render(landingTemp(bestScores), STARTING_SCREEN);
     STARTING_SCREEN.addEventListener('click', (ev)=>{
         if(ev.target.id == 'start-game'){
             username = document.querySelector('input').value;

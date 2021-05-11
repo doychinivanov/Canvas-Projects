@@ -12,5 +12,5 @@ export async function sendScore(player, score){
 export async function getBest(){
     const best = await api.get(host + '/?order=-score&limit=5');
 
-    return best;
+    return best.results;
 }
