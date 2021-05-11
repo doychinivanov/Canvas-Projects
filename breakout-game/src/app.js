@@ -1,9 +1,12 @@
 import {html, render} from '../node_modules/lit-html/lit-html.js';
+import {sendScore} from './api/data.js';
 
 import {gameSets} from './gameVariables.js';
 import {draw, setBricks} from './renderGame.js';
 import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall, nextLevel, fullHeart, emptyHeart } from './collisions.js'
 import {canvas, ctx} from './setContext.js';
+
+window.api = {sendScore};
 
 let game_is_running = true;
 
@@ -71,7 +74,7 @@ function update(){
     LEVEL_HOLDER.textContent = gameSets.level;
 }
 
-function renderGame(){
+async function renderGame(){
     ctx.drawImage(BACKGROUND_IMG, 0, 0, canvas.width, canvas.height);
     draw();
     update();
@@ -85,6 +88,7 @@ function renderGame(){
         render(gameOver(), GAME_OVER_SCREEN);
         GAME_OVER_SCREEN.style.display = 'block';
         GAME_OVER_MUSIC.play();
+        await sendScore(username, gameSets.score);
         restartGame();
     }
 }
