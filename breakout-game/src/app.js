@@ -161,7 +161,7 @@ const gameOver = () => html`
 
 <h1>Game Over</h1>
 
-<h3>Your Score is 1575</h3>
+<h3>Your Score is ${gameSets.score}</h3>
 
 <button id="restart">Press Space to Restart Game</button>
 `;
