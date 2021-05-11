@@ -8,3 +8,9 @@ export async function sendScore(player, score){
 
     return await api.post(host, body);
 }
+
+export async function getBest(){
+    const best = await api.get(host + '/?order=-score&limit=5');
+
+    return best;
+}

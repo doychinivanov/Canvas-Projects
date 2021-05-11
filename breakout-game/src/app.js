@@ -1,12 +1,12 @@
 import {html, render} from '../node_modules/lit-html/lit-html.js';
-import {sendScore} from './api/data.js';
+import {sendScore, getBest} from './api/data.js';
 
 import {gameSets} from './gameVariables.js';
 import {draw, setBricks} from './renderGame.js';
 import {collidingWithBricks, ballBoardCollision, ballCollidesWithWall, nextLevel, fullHeart, emptyHeart } from './collisions.js'
 import {canvas, ctx} from './setContext.js';
 
-window.api = {sendScore};
+window.api = {getBest};
 
 let game_is_running = true;
 
