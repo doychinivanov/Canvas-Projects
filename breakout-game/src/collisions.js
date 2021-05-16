@@ -88,10 +88,11 @@ export function nextLevel(){
 
         if(levelComplete){
 
-            if(gameSets.level >= gameSets.LAST_LEVEL){
-                gameSets.GAME_STATE = false;
-                return;
-            }
+            // if(gameSets.level > gameSets.LAST_LEVEL){
+            //     gameSets.GAME_STATE = false;
+            //     gameSets.gameHasBeenWon = true;
+            //     return;
+            // }
 
             gameSets.brick.row++;
             setBricks();

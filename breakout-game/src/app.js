@@ -82,12 +82,24 @@ async function renderGame(){
     if(gameSets.GAME_STATE != false && game_is_running == true){
         requestAnimationFrame(renderGame);
     }
+
+    if(gameSets.level > gameSets.LAST_LEVEL){
+        gameSets.GAME_STATE = false;
+        gameSets.gameHasBeenWon = true;
+    }
     
     if(gameSets.GAME_STATE == false) {
         game_is_running = false;
-        render(gameOver(), GAME_OVER_SCREEN);
+
+        if(gameSets.gameHasBeenWon == true){
+            render(wonGame(), GAME_OVER_SCREEN);
+
+        } else {
+            render(gameOver(), GAME_OVER_SCREEN);
+            GAME_OVER_MUSIC.play();
+        }
+
         GAME_OVER_SCREEN.style.display = 'block';
-        GAME_OVER_MUSIC.play();
         await sendScore(username, gameSets.score);
         restartGame();
     }
@@ -160,6 +172,15 @@ const gameOver = () => html`
 <img src="/assets/skull.jpg" alt="death">
 
 <h1>Game Over</h1>
+
+<h3>Your Score is ${gameSets.score}</h3>
+
+<button id="restart">Press Space to Restart Game</button>
+`;
+
+
+const wonGame = () => html`
+<h1>You Won! You passed all levels!</h1>
 
 <h3>Your Score is ${gameSets.score}</h3>
 

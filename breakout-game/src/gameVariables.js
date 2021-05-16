@@ -14,6 +14,7 @@ let level = 1;
 let life = [1, 1, 1];
 let score = 0;
 const LAST_LEVEL = 7;
+let gameHasBeenWon = false;
 const scoreUnit = 15;
 const bricks = [];
 
@@ -46,4 +47,4 @@ const brick = {
     strokeColor : '#FFF'
 }
 
-export const gameSets = {level, life, board, ball, score, scoreUnit, bricks, brick, LAST_LEVEL, GAME_STATE}
+export const gameSets = {level, life, board, ball, score, scoreUnit, bricks, brick, LAST_LEVEL, GAME_STATE, gameHasBeenWon}
