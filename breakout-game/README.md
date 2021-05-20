@@ -13,7 +13,7 @@ This is a remake of Atari's original game "Breakout" from the 70s. The purpose o
 
 
 ## Technologies
-* Canvas
+* Canvas API
 * HTML5
 * SASS
 * CSS3
@@ -22,7 +22,11 @@ This is a remake of Atari's original game "Breakout" from the 70s. The purpose o
 * Back4app
 
 ## Views
-
+* Game field - the space in which the game takes place
+* Information board - keeps track of current level, score and remaining lives
+* Score board - displays top 5 best scores and player'name; current play must set a own playername in order to start the game
+* Game over - displays the achived score at the time when the last remaining life is lost; reset game option
+* You won the game - displays when all levels are completed successfully
 
 ## Data Structure
 ### Collections
@@ -34,9 +38,3 @@ This is a remake of Atari's original game "Breakout" from the 70s. The purpose o
     score: Number,
 }
 ```
-
-
-## Access Control
-* Guests can register, browse the quizzes, see details about the quizzes and see users' profile pages
-* Registered users can solve quizzes and see their results
-* Only quiz author can edit and delete the quiz
