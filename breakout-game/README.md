@@ -3,13 +3,10 @@ This is a remake of Atari's original game "Breakout" from the 70s. The purpose o
 
 
 ## Features
-* User registration
-* Each user has a profile, which contains statistics for the current user - their results, filtered from highest to lowest, as well as all the quizzes created by them
-* User Authentication - only logged in users can solve and create quizzes. Only quiz author can edit or delete their own quizzes. A guest can only browse through the quizzes.
-* Diffrent topics, by which quizzes can be filtered
-* Interactive quizz editor
-* Timer, which tracks the time for taking the quizz. When the time is over the quiz submits automatically as it is in the moment the time ends. The amount of time is set up by the quiz author.
-* QuizzMe is a responsive application, meaning it can be used on all devices - mobile, tablets, PC
+* the game imitates the feeling of a 8-bit arcade game
+* the user must set a player name for the game;
+* at the beginning of the game top 5 scores are presented
+* the game implements music for better 8-bit experiance (I do not own the music. It has been taken from youtube)
 
 
 ## Technologies
@@ -24,7 +21,7 @@ This is a remake of Atari's original game "Breakout" from the 70s. The purpose o
 ## Views
 * Game field - the space in which the game takes place
 * Information board - keeps track of current level, score and remaining lives
-* Score board - displays top 5 best scores and player'name; current play must set a own playername in order to start the game
+* Score board - displays top 5 best scores and player'name; current player must set a own playername in order to start the game
 * Game over - displays the achived score at the time when the last remaining life is lost; reset game option
 * You won the game - displays when all levels are completed successfully
 
