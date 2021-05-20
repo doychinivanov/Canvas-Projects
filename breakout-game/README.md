@@ -1,7 +1,5 @@
-# Quiz System - QuizzMe
-QuizzMe is a free web application for creating, managing and solving quizzes in categories by choice.
-
-QuizzMe is a SPA (Single Page Application) made as a school project, which serves as a way to practice and master my skills currently gained at SoftUni. The project aims to practice concepts like Asynchronous Programming, using a remote server (BaaS), CRUD operations, User Authentication, Client Side Rendering (Templating Concepts), Routing, Component Approach and others.
+# Breakout Game
+This is a remake of Atari's original game "Breakout" from the 70s. The purpose of this project is to simply practise the Canvas API.
 
 
 ## Features
@@ -15,69 +13,28 @@ QuizzMe is a SPA (Single Page Application) made as a school project, which serve
 
 
 ## Technologies
-* HTML
-* CSS
+* Canvas
+* HTML5
+* SASS
+* CSS3
 * JavaScript
 * lit-html
-* page.js
-* GitHub Pages
 * Back4app
 
 ## Views
-* Landing Page (Home Page) - User view - greeting user, updated user navigation, three most recent quizzes. Guest view - a short information about the app, guest navigation, three most recent quizzes
-* Login/Register - registration with username, email and password. Login with username and password
-* Profile Page - Highest result , followed by an option to see all results, sorted in descending order. Option to see all quizzes, created by the current user
-* Browse Page - a list with all quizzes and an option to filter them by quiz topic
-* Details Page - additional quiz description, statistics for how many times the quiz has been taken, link to author's profile page, start quizz button
-* Contest Mode - answering questions, each question is a separated view, interactive quiz navigation
-* Result Page - results summary with options to retake the quiz or see details about current result
-* Editor Page - view for creating and editing quizzes, questions and answeres 
+
 
 ## Data Structure
 ### Collections
-* Sessions
-* Useres
+* PLayer
 ```javascript
 {
     objectId: String
-    email: String,
-    username: String,
-    password: String,
+    playerName: String,
+    score: Number,
 }
 ```
-* Quiz
-```javascript
-{
-    objectId: String
-    title: String,
-    topic: String,
-    questionCount: Number,
-    description: String,
-    time: Number,
-    owner: Pointer<User>
-}
-```
-* Questions
-```javascript
-{
-    objectId: String
-    text: String,
-    answers: Array<String>,
-    correctIndex: Number,
-    quiz: Pointer<Quiz>,
-    owner: Pointer<User>
-}
-```
-* Solution
-```javascript
-{
-    objectId: String
-    correct: Number,
-    tota: Number,
-    quiz: Pointer<Quiz>,
-    owner: Pointer<User>
-}
-```
+
 
 ## Access Control
 * Guests can register, browse the quizzes, see details about the quizzes and see users' profile pages
